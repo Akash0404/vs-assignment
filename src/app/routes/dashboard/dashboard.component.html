@@ -1,0 +1,66 @@
+<breadcrumb></breadcrumb>
+
+<div class="row">
+  <div class="col-md-12">
+    <mat-form-field appearance="outline">
+      <mat-label>Select Date</mat-label>
+      <input matInput [matDatepicker]="datePicker" [(ngModel)]="startDate" (dateChange)="onDateChange($event)">
+      <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="updateData()">Update</button>
+  </div>
+  
+  <!-- Statistics -->
+  <div class="col-sm-6 col-md-3" *ngFor="let stat of stats">
+    <mat-card [ngClass]="['text-white', stat.color]" style="height: 91%;">
+      <mat-card-header>
+        <mat-card-subtitle class="text-white">{{stat.title}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h2 class="m-y-8">{{stat.amount}}</h2>
+        <mtx-progress [value]="stat.progress.value"
+                      height="2px"
+                      foreground="rgba(255,255,255,1)"
+                      background='rgba(0,0,0,.5)'>
+        </mtx-progress>
+        <small class="text-muted">Monthly</small>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-md-3">
+    <mat-card>
+      <mat-card-header>
+      </mat-card-header>
+      <mat-card-content>
+        <div id="chart5"></div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+ 
+
+  <!-- Charts -->
+  <div class="col-md-5">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>MRR Stats by Country</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div id="chart3"></div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-md-7">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>MRR</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div id="chart4"></div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+
+</div>
